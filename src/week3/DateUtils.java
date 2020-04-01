@@ -1,7 +1,7 @@
 package week3;
 
 public class DateUtils {
-	public void CompareTwoDate() {
+	public void CompareTwoDate(String day1, String day2) {
 		
 	}
 	
