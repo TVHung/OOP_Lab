@@ -1,5 +1,5 @@
 package week3;
-
+import java.util.Date;
 public class Main {
 
 	public static void main(String[] args) {
@@ -18,9 +18,11 @@ public class Main {
 //		complex.nhapSoPhuc(complex1);
 		//complex.inSoPhuc(complex1);
 		
-		MyDate test = new MyDate();
-		test.accept();
-		test.print();
+//		MyDate test = new MyDate();
+//		test.accept();
+//		test.print();
+		DateUtils test = new DateUtils();
+		//test.CompareTwoDate(13/09/1999, 20/09/1995);
 	}
 
 }

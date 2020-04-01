@@ -9,7 +9,7 @@ public class Order {
 	
 	private static DigitalVideoDisc itemOrder[] = new DigitalVideoDisc[MAX_NUMBER_ORDER];
 	
-	private static String dateOrderd;
+	private static String dateOrderd = "1999/09/13";
 	
 	private static int nbOrders = 0;
 	
@@ -35,7 +35,8 @@ public class Order {
 		if(qtyOrder <= MAX_NUMBER_ORDER - 1) {
 			itemOrder[qtyOrder] = new DigitalVideoDisc();
 			itemOrder[qtyOrder] = disc;
-			qtyOrder++;		
+			qtyOrder++;
+			nbOrders++;
 		}else {
 			System.out.println("Order is full, you can't add DVD");
 		}
@@ -47,6 +48,7 @@ public class Order {
 				itemOrder[qtyOrder] = new DigitalVideoDisc();
 				itemOrder[qtyOrder] = dvdlist[i];
 				qtyOrder++;
+				nbOrders++;
 			}			
 		}else {
 			
@@ -61,6 +63,7 @@ public class Order {
 				itemOrder[qtyOrder] = new DigitalVideoDisc();
 				itemOrder[qtyOrder] = dvdlist[i];
 				qtyOrder++;
+				nbOrders++;
 			}
 		}else {
 			System.out.println("Order is full, you can't add list dvd");
@@ -75,10 +78,12 @@ public class Order {
 			itemOrder[qtyOrder] = new DigitalVideoDisc();
 			itemOrder[qtyOrder] = disc2;
 			qtyOrder++;
+			nbOrders++;
 		}else if(qtyOrder == MAX_NUMBER_ORDER - 1) {
 			itemOrder[qtyOrder] = new DigitalVideoDisc();
 			itemOrder[qtyOrder] = disc1;
 			qtyOrder++;
+			nbOrders++;
 			System.out.println("You can't add dvd: " + disc2.getTitle());
 		}else {
 			System.out.println("You can't add dvd: " + disc1.getTitle());
@@ -128,6 +133,7 @@ public class Order {
 	
 	public static void showInfor() {
 		System.out.println("**************************************Order**********************************");
+		System.out.println(getDateOrderd());
 		for (int i = 0; i < qtyOrder; i++) {
 			System.out.print((i+1) + ". DVD");
 			System.out.print(" - [" + itemOrder[i].getTitle() + "]");
