@@ -1,8 +1,9 @@
 package week3;
+import java.text.ParseException;
 import java.util.Date;
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		//d
 //		Point point1 = new Point("A", 5.32, 12.3);
 //		point1.printPoint();
@@ -22,7 +23,19 @@ public class Main {
 //		test.accept();
 //		test.print();
 		DateUtils test = new DateUtils();
-		//test.CompareTwoDate(13/09/1999, 20/09/1995);
+		String strDate1 = "13/09/1999";
+		String strDate2 = "20/09/1995";
+		String[] strDate = new String[3];
+		strDate[0] = "13/09/1999";
+		strDate[1] = "20/09/1995";
+		strDate[2] = "22/08/2005";
+		
+		test.printCompareDate(strDate1, strDate2);
+		test.SortDate(strDate);
+		for (int i = 0; i < strDate.length; i++) {
+			System.out.println(strDate[i]);
+		}
+		
 	}
 
 }
