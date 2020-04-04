@@ -1,0 +1,12 @@
+package week3;
+import java.util.Date;
+
+public class DateUtils {
+	public void CompareTwoDate(String date1, String date2) {
+		
+	}
+	
+	public void SortDate(String date[]) {
+		
+	}
+}

@@ -1,0 +1,17 @@
+package week3;
+
+public class DateUtils {
+	public void CompareTwoDate(String day1, String day2) {
+		String[] str1 = new String[3];
+		String[] str2 = new String[3];
+		str1 = day1.split("/"); 
+		str2 = day1.split("/"); 
+		if(Integer.parseInt(str2[2]) > Integer.parseInt(str1[2])){
+			System.out.println("Ngay " + day2 + " truoc ngay " + day1);
+		}
+	}
+	
+	public void SortDate() {
+		
+	}
+}

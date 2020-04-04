@@ -1,0 +1,17 @@
+package week3;
+
+public class DateUtils {
+	public void CompareTwoDate(String day1, String day2) {
+		String[] str1 = new String[3];
+		String[] str2 = new String[3];
+		str1 = day1.split("/"); 
+		str2 = day1.split("/"); 
+		System.out.println(str1[0]);
+		System.out.println(str1[1]);
+		System.out.println(str1[2]);
+	}
+	
+	public void SortDate() {
+		
+	}
+}
