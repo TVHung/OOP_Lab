@@ -18,4 +18,6 @@
 <fullyQualifiedTypeName name="week3.DateUtils"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="hust.soict.hedspi.aims.disc.DigitalVideoDisc.DigitalVideoDisc"/>
+<fullyQualifiedTypeName name="hust.soict.hedspi.aims.order.Order.Order"/>
 </qualifiedTypeNameHistroy>
