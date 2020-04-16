@@ -2,74 +2,62 @@ package hust.soict.hedspi.aims.order.Order;
 
 import java.util.Calendar;
 import java.util.Random;
+
 import hust.soict.hedspi.aims.disc.DigitalVideoDisc.DigitalVideoDisc;
 
 public class Order {
-	private static int qtyOrder = 0;
-	
-	public static final int MAX_NUMBER_ORDER = 5;
-	
-	private static DigitalVideoDisc itemOrder[] = new DigitalVideoDisc[MAX_NUMBER_ORDER];
-	
+	public static final int MAX_NUMBER_ORDER = 10;
+	public static final int MAX_LIMIT_ORDERS = 2;
 	public static String dateOrderd = "2020/04/10";
-	
+	private static int qtyOrder = 0;
 	private static int nbOrders = 0;
-	
-	public static final int MAX_LIMIT_ORDERS = 5;
+	private static DigitalVideoDisc itemOrder[] = new DigitalVideoDisc[MAX_NUMBER_ORDER];
 	
 	public static String getDateOrderd() {
 		return dateOrderd;
 	}
-
 	public static void setDateOrderd(String dateOrderd) {
 		Order.dateOrderd = dateOrderd;
 	}
-
 	public int getQtyOrder() {
 		return qtyOrder;
 	}
-
 	public void setQtyOrder(int qtyOrder) {
 		this.qtyOrder = qtyOrder;
 	}
-
+	
 	public static void addDigitalVideoDisc(DigitalVideoDisc disc) {
-		if(qtyOrder <= MAX_NUMBER_ORDER - 1) {
-			itemOrder[qtyOrder] = new DigitalVideoDisc();
-			itemOrder[qtyOrder] = disc;
-			qtyOrder++;
-			nbOrders++;
-		}else {
-			System.out.println("Order is full, you can't add DVD");
-		}
+		checkMaxDVD();
+		itemOrder[qtyOrder] = new DigitalVideoDisc();
+		itemOrder[qtyOrder] = disc;
+		qtyOrder++;
+		nbOrders++;
+	
 	}
 //	override
 	public static void addDigitalVideoDisc(DigitalVideoDisc [] dvdlist) {
-		if(qtyOrder + dvdlist.length <= MAX_NUMBER_ORDER - 1) {
-			for (int i = 0; i < dvdlist.length; i++) {
-				itemOrder[qtyOrder] = new DigitalVideoDisc();
-				itemOrder[qtyOrder] = dvdlist[i];
-				qtyOrder++;
-			}			
-		}else {
-			
-			System.out.println("Order is full, you can't add list dvd");
+		int i = 0;
+		while(qtyOrder + (i+1) <= MAX_NUMBER_ORDER - 1) {
+			checkMaxDVD();
+			itemOrder[qtyOrder] = new DigitalVideoDisc();
+			itemOrder[qtyOrder] = dvdlist[i];
+			qtyOrder++;
+			i++;
 		}
-		
 	}
-	
 	public static void addDigitalVideoDisc(DigitalVideoDisc [] dvdlist, int size) {
-		if(qtyOrder + size <= MAX_NUMBER_ORDER - 1) {
-			for (int i = 0; i < size; i++) {
-				itemOrder[qtyOrder] = new DigitalVideoDisc();
-				itemOrder[qtyOrder] = dvdlist[i];
-				qtyOrder++;
+		int i = 0;
+		while(qtyOrder + (i+1) <= MAX_NUMBER_ORDER - 1) {
+			checkMaxDVD();
+			if(i == (size - 1)) {
+				System.exit(1);
 			}
-		}else {
-			System.out.println("Order is full, you can't add list dvd");
+			itemOrder[qtyOrder] = new DigitalVideoDisc();
+			itemOrder[qtyOrder] = dvdlist[i];
+			qtyOrder++;
 		}
+			
 	}
-	
 	public static void addDigitalVideoDisc(DigitalVideoDisc disc1, DigitalVideoDisc disc2) {
 		if(qtyOrder <= MAX_NUMBER_ORDER - 2) {
 			itemOrder[qtyOrder] = new DigitalVideoDisc();
@@ -89,8 +77,6 @@ public class Order {
 		}
 		
 	}
-	
-	
 	
 	public static void removeDigitalVideoDisc(DigitalVideoDisc disc) {
 		int check = 0;
@@ -131,6 +117,7 @@ public class Order {
 	
 	public static void showInfor() {
 		System.out.println("**************************************Order**********************************");
+		System.out.println("ORDER " + (nbOrders+1));
 		System.out.println(getDateOrderd());
 		for (int i = 0; i < qtyOrder; i++) {
 			System.out.print((i+1) + ". DVD");
@@ -141,22 +128,39 @@ public class Order {
 			System.out.println(" : [" + itemOrder[i].getCost() + "]$");
 			System.out.println();
 		}
+		System.out.println("Total cost is: [" + totalCost() + "]");
+		System.out.println("*************************************************************************");
 	}
 	
 	public static void getALuckyItem() {
 		Random random = new Random();
-		int i = random.nextInt(qtyOrder);
-		System.out.print(" - [" + itemOrder[i].getTitle() + "]");
-		System.out.print(" - [" + itemOrder[i].getCategory() + "]");
-		System.out.print(" - [" + itemOrder[i].getDiretor() + "]");
-		System.out.print(" - [" + itemOrder[i].getLength() + "]");
-		System.out.println(" : [" + itemOrder[i].getCost() + "]$");
-		System.out.println();
+		int j = random.nextInt(qtyOrder);
+		System.out.println("**************************************Order**********************************");
+		System.out.println(getDateOrderd());
+		for (int i = 0; i < qtyOrder; i++) {
+			System.out.print((i+1) + ". DVD");
+			System.out.print(" - [" + itemOrder[i].getTitle() + "]");
+			System.out.print(" - [" + itemOrder[i].getCategory() + "]");
+			System.out.print(" - [" + itemOrder[i].getDiretor() + "]");
+			System.out.print(" - [" + itemOrder[i].getLength() + "]");
+			System.out.println(" : [" + itemOrder[i].getCost() + "]$");
+			System.out.println();
+		}
+		System.out.println("DVD " + itemOrder[j].getTitle() + " is free");
+		System.out.println("Total cost is: [" + (totalCost() - itemOrder[j].getCost()) + "]");
+		System.out.println("*************************************************************************");
 	}
 	
-	public static void checkMax() {
-		if(qtyOrder >= 10) {
+	public static void checkMaxDVD() {
+		if(qtyOrder >= MAX_NUMBER_ORDER) {
 			System.out.println("You can't add DVD because order is full!");
+			System.exit(1);
+		}
+	}
+	public static void checkMaxOrder() {
+		if(nbOrders >= MAX_LIMIT_ORDERS) {
+			System.out.println("You can't order more!");
+			System.exit(1);
 		}
 	}
 }

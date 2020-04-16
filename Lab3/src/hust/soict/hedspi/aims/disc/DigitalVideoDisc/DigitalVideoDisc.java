@@ -104,6 +104,12 @@ public class DigitalVideoDisc {
 	}
 	
 	public boolean search(String title) {
-		return this.title.equalsIgnoreCase(title);
+		if(this.title.equalsIgnoreCase(title)) {
+			return true;
+		}
+		if(this.title.toLowerCase().contains(title.toLowerCase())) {
+			return true;
+		}
+		return false;
 	}
 }
