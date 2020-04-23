@@ -2,10 +2,24 @@ package hust.soict.hedspi.aims.media;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class Order {
+	public static final int MAX_NUMBERS_ORDEREDS = 5;
+	public static final int MAX_LIMITED_ORDEREDS = 2;
+	public int id = 0;
+	
 	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
-	private String dateOrdered; 
+	private String dateOrdered = "17/04/2020";
+	
+	public Order() {
+		super();
+		if(id < MAX_LIMITED_ORDEREDS) {
+			id++;
+		} else {
+			System.out.println("The order is limited to!");
+		}
+	}
 	
 	public ArrayList<Media> getItemsOrdered() {
 		return itemsOrdered;
@@ -16,30 +30,40 @@ public class Order {
 	}
 	
 	public void addMedia(Media media) {
-		if(!(itemsOrdered.contains(media))) {
-			itemsOrdered.add(media);
-		}else {
-			System.out.println("Media is exist, you can't add media");
+		if(itemsOrdered.size() < MAX_NUMBERS_ORDEREDS) {
+			media.setId(itemsOrdered.size() + 1);
+			this.itemsOrdered.add(media);
+			if(itemsOrdered.size() + 1 == MAX_NUMBERS_ORDEREDS) {
+				System.out.println("The media has been added!. The order is almost full!");
+			} else {
+				System.out.println("The media has been added!");
+			}
+		} else {
+			System.out.println("The order is full. Please remove old order before add !");
 		}
 	}
-
+	
 	public void removeMedia(Media media) {
-		if(itemsOrdered.contains(media)) {
-			itemsOrdered.remove(media);
-		}else {
-			System.out.println("Media is not exist, you can't remove media");
+		if(itemsOrdered.size() == 0) {
+			System.out.println("The order is empty!");
+		} else {
+			if(this.itemsOrdered.contains(media)) {
+				this.itemsOrdered.remove(media);
+				System.out.println("The media has been removed!");
+			} else {
+				System.out.println("The media hasn't in the order!");
+			}
 		}
 	}
+	
+	
 	
 	public void showOrder() {
 		System.out.println("********************************ORDER********************************");
 		System.out.println("Date: " + dateOrdered);
 		System.out.println("Ordered Items:" );
 		for(Media item : this.itemsOrdered) {
-			String title = item.getTitle();
-			String category = item.getCategory();
-			float price = item.getCost();
-			System.out.println(item.getId() + " - " + title + " - " + category + " - " + price + "$" );
+			System.out.println(item.getId() + " - " + item.getTitle() + " - " + item.getCategory() + " - " + item.getCost());
         }
 		System.out.println("Total Cost:" + this.totalCost());
 		System.out.println("*********************************************************************");
@@ -47,15 +71,13 @@ public class Order {
 	}
 
 	public float totalCost() {
-		float total = 0;
-        Media mediaItem;
-        Iterator<Media> iter = itemsOrdered.iterator();
-
-        while(iter.hasNext()){
-            mediaItem = (Media) (iter.next());
-            total += mediaItem.getCost();
-        }
-        return total;
+		float total = 0.0f;
+		if(itemsOrdered.size() > 0) {
+			for(Media item : this.itemsOrdered){
+	            total += item.getCost();
+	        }
+		}
+		return total;
 	}
 
 }

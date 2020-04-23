@@ -1,12 +1,12 @@
 package hust.soict.hedspi.aims.media;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Book extends Media {
 	private ArrayList<String> authors = new ArrayList<String>();
 	
-	public Book(){
-		
+	public Book(){	
     }
 	public Book(String title) {
 		super(title);
@@ -42,5 +42,25 @@ public class Book extends Media {
 		}
 	}
 	
-	
+	public void inputBook() {
+		String iTitle, iCategory;
+		String iAuthor;
+		float iCost;
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter title: ");
+		iTitle	= input.nextLine();
+		setTitle(iTitle);
+		
+		System.out.println("Enter category: ");
+		iCategory	= input.nextLine();
+		setCategory(iCategory);
+		
+		System.out.println("Enter author: ");
+		iAuthor	= input.nextLine();
+		authors.add(iAuthor);
+		
+		System.out.println("Enter cost: ");
+		iCost	= input.nextFloat();
+		setCost(iCost);
+	}
 }

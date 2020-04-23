@@ -25,7 +25,7 @@
 	<section name="ResourceNavigator">
 		<item key="ResourceViewer.STORE_SORT_TYPE" value="1"/>
 		<item key="ResourceWorkingSetFilter.STORE_WORKING_SET" value="Java Main Sources"/>
-		<item key="LINK_NAVIGATOR_TO_EDITOR" value="true"/>
+		<item key="LINK_NAVIGATOR_TO_EDITOR" value="false"/>
 	</section>
 	<section name="ExternalProjectImportWizard">
 		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
@@ -34,6 +34,7 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="E:\Java"/>
 			<item value="E:\Java\OOP_Lab"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
