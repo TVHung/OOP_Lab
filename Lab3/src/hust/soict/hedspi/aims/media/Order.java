@@ -63,7 +63,9 @@ public class Order {
 		System.out.println("Date: " + dateOrdered);
 		System.out.println("Ordered Items:" );
 		for(Media item : this.itemsOrdered) {
-			System.out.println(item.getId() + " - " + item.getTitle() + " - " + item.getCategory() + " - " + item.getCost());
+			//System.out.println(item.getId() + " - " + item.getTitle() + " - " + item.getCategory() + " - " + item.getCost());
+			System.out.print(item.getId() + ". ");
+			item.show();
         }
 		System.out.println("Total Cost:" + this.totalCost());
 		System.out.println("*********************************************************************");

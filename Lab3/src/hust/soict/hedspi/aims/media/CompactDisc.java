@@ -3,7 +3,7 @@ package hust.soict.hedspi.aims.media;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CompactDisc extends Disc implements Playable{
+public class CompactDisc extends Disc implements Playable, Comparable{
 	private String artist;
 	private int length;
 	private ArrayList<Track> tracks = new ArrayList<Track>();
@@ -39,7 +39,7 @@ public class CompactDisc extends Disc implements Playable{
 	}
 	
 	public void inputCD() {
-		String iTitle, iCategory, iDirector;
+		String iTitle, iCategory, iArtist;
 		int iLength;
 		float iCost;
 		Scanner input = new Scanner(System.in);
@@ -47,22 +47,22 @@ public class CompactDisc extends Disc implements Playable{
 			iTitle	= input.nextLine();
 			setTitle(iTitle);
 			
+			System.out.println("Enter artist: ");
+			iArtist	= input.nextLine();
+			setDirector(iArtist);
+			
 			System.out.println("Enter category: ");
 			iCategory	= input.nextLine();
 			setCategory(iCategory);
-			
-			System.out.println("Enter diretor: ");
-			iDirector	= input.nextLine();
-			setDirector(iDirector);
-			
-			System.out.println("Enter length: ");
-			iLength	= input.nextInt();
-			setLength(iLength);
 			
 			System.out.println("Enter cost: ");
 			iCost	= input.nextFloat();
 			setCost(iCost);
 	}
+	public void show() {
+		System.out.println("CD: " + this.getTitle() + " - " + this.getArtist() + " - " + this.getCategory() + " - " + this.getCost());
+	}
+	
 	public void selectListTrack() {
 		int count = 1;
 		Scanner scanner = new Scanner(System.in);
@@ -78,5 +78,10 @@ public class CompactDisc extends Disc implements Playable{
 			System.exit(1);
 		}
 		tracks.get(chooseTrack-1).play();
+	}
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

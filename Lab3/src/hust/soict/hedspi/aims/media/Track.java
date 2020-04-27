@@ -2,7 +2,7 @@ package hust.soict.hedspi.aims.media;
 
 import java.util.Scanner;
 
-public class Track implements Playable{
+public class Track implements Playable, Comparable{
 	private String title;
 	private int length;
 	
@@ -37,5 +37,10 @@ public class Track implements Playable{
 		setLength(iLength);
 		
 		
+	}
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

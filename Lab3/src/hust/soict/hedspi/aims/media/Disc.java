@@ -16,4 +16,8 @@ public class Disc extends Media{
 	public void setDirector(String director) {
 		this.director = director;
 	}
+	@Override
+	protected void show() {
+		
+	}
 }
