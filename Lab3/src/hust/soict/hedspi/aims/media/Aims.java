@@ -1,6 +1,8 @@
 package hust.soict.hedspi.aims.media;
 
+import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Aims {
@@ -120,7 +122,7 @@ public class Aims {
 		System.out.println("5. Play track from CD.");
 		System.out.println("0. Exit");
 		System.out.println("--------------------------------");
-		System.out.println("Please choose a number: 0-1-2-3-4");
+		System.out.println("Please choose a number: 0-1-2-3-4-5");
 	}
 	
 

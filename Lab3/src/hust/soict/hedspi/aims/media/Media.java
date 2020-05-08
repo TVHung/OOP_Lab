@@ -54,4 +54,15 @@ public abstract class Media {
 		this.cost = cost;
 	}
 	protected abstract void show();	
+	
+	public boolean equals(Media media) {
+		if(this.id == media.id) {
+			return true;
+		}
+		return false;
+	}
+	public int compareTo(Book o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

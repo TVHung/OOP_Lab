@@ -10,8 +10,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="myPrint"/>
+		<item key="selection" value="Collections"/>
 		<list key="findhistory">
+			<item value="Collections"/>
+			<item value="colections"/>
 			<item value="System.out.println"/>
 		</list>
 		<list key="replacehistory">

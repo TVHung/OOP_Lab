@@ -2,7 +2,7 @@ package hust.soict.hedspi.aims.media;
 
 import java.util.Scanner;
 
-public class DigitalVideoDisc extends Media implements Playable, Comparable{
+public class DigitalVideoDisc extends Disc implements Playable{
 	private String diretor;
 	private int length;
 
@@ -76,9 +76,5 @@ public class DigitalVideoDisc extends Media implements Playable, Comparable{
 		System.out.println("Playing DVD: " + this.getTitle());  
 		System.out.println("DVD length: " + this.getLength()); 
 	}
-	@Override
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 }

@@ -3,7 +3,7 @@ package hust.soict.hedspi.aims.media;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CompactDisc extends Disc implements Playable, Comparable{
+public class CompactDisc extends Disc implements Playable{
 	private String artist;
 	private int length;
 	private ArrayList<Track> tracks = new ArrayList<Track>();
@@ -16,15 +16,21 @@ public class CompactDisc extends Disc implements Playable, Comparable{
 	}
 	
 	public void addTrack(Track track) {
-		if(!(tracks.contains(track))) {
+		boolean check = true;
+		for(Track t : tracks) {
+			if(t.equals(track) == true) {
+				check = false;
+			}
+		}
+		if(check){
 			tracks.add(track);
-		}else {
+		}else{
 			System.out.println("Author is exist, you can't add author");
 		}
 	}
 	
 	public void removeTrack(Track track) {
-		if(tracks.contains(track)) {
+		if(tracks.equals(track)) {
 			tracks.remove(track);
 		}else {
 			System.out.println("Author is not exist, you can't remove author");
@@ -80,8 +86,10 @@ public class CompactDisc extends Disc implements Playable, Comparable{
 		tracks.get(chooseTrack-1).play();
 	}
 	@Override
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int compareTo(Disc o) {
+		if (o == this) { 
+            return 0; 
+        } 
+        return this.getTitle().compareTo(o.getTitle());
 	}
 }

@@ -1,8 +1,11 @@
 package hust.soict.hedspi.aims.media;
 
+import java.awt.SystemColor;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
-import java.util.Scanner;
+import java.util.List;
 
 public class Order {
 	public static final int MAX_NUMBERS_ORDEREDS = 5;
@@ -31,16 +34,17 @@ public class Order {
 	
 	public void addMedia(Media media) {
 		if(itemsOrdered.size() < MAX_NUMBERS_ORDEREDS) {
-			media.setId(itemsOrdered.size() + 1);
-			this.itemsOrdered.add(media);
-			if(itemsOrdered.size() + 1 == MAX_NUMBERS_ORDEREDS) {
-				System.out.println("The media has been added!. The order is almost full!");
-			} else {
+			if(itemsOrdered.equals(media) == true) {
+				System.out.println("Media already exists, please enter another media!");
+			}else {
+				media.setId(itemsOrdered.size() + 1);
+				this.itemsOrdered.add(media);
 				System.out.println("The media has been added!");
 			}
 		} else {
 			System.out.println("The order is full. Please remove old order before add !");
 		}
+		
 	}
 	
 	public void removeMedia(Media media) {
@@ -62,6 +66,7 @@ public class Order {
 		System.out.println("********************************ORDER********************************");
 		System.out.println("Date: " + dateOrdered);
 		System.out.println("Ordered Items:" );
+	
 		for(Media item : this.itemsOrdered) {
 			//System.out.println(item.getId() + " - " + item.getTitle() + " - " + item.getCategory() + " - " + item.getCost());
 			System.out.print(item.getId() + ". ");
@@ -81,5 +86,4 @@ public class Order {
 		}
 		return total;
 	}
-
 }

@@ -2,7 +2,7 @@ package hust.soict.hedspi.aims.media;
 
 import java.util.Scanner;
 
-public class Track implements Playable, Comparable{
+public class Track implements Playable, Comparable<Track>{
 	private String title;
 	private int length;
 	
@@ -38,9 +38,18 @@ public class Track implements Playable, Comparable{
 		
 		
 	}
+	
+	public boolean equals(Track track) {
+		if(this.getTitle().equalsIgnoreCase(track.getTitle()) && this.length == track.getLength()) {
+			return true;
+		}
+		return false;
+	}	
 	@Override
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int compareTo(Track o) {
+		if (o == this) { 
+            return 0; 
+        } 
+        return title.compareTo(o.title);
 	}
 }
